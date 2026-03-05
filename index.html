@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Smart Resume & Portfolio Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>AI Smart Resume & Portfolio Generator</h1>
+            <p>Create professional resumes, cover letters, and portfolios with AI</p>
+        </header>
+
+        <main class="main-content">
+            <form class="resume-form" action="/generate" method="POST">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required placeholder="Your full name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required placeholder="john@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="+91 1234567890">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="target_role">Target Job/Role</label>
+                        <select id="target_role" name="target_role" required>
+                            <option value="">Select a role...</option>
+                            <option value="Software Engineer">Software Engineer</option>
+                            <option value="Data Scientist">Data Scientist</option>
+                            <option value="Product Manager">Product Manager</option>
+                            <option value="Web Developer">Web Developer</option>
+                            <option value="Mobile App Developer">Mobile App Developer</option>
+                            <option value="DevOps Engineer">DevOps Engineer</option>
+                            <option value="Machine Learning Engineer">Machine Learning Engineer</option>
+                            <option value="Frontend Developer">Frontend Developer</option>
+                            <option value="Backend Developer">Backend Developer</option>
+                            <option value="Full Stack Developer">Full Stack Developer</option>
+                            <option value="UI/UX Designer">UI/UX Designer</option>
+                            <option value="Business Analyst">Business Analyst</option>
+                            <option value="Project Manager">Project Manager</option>
+                            <option value="Software Architect">Software Architect</option>
+                            <option value="Quality Assurance Engineer">Quality Assurance Engineer</option>
+                            <option value="Cloud Engineer">Cloud Engineer</option>
+                            <option value="Cybersecurity Analyst">Cybersecurity Analyst</option>
+                            <option value="Data Analyst">Data Analyst</option>
+                            <option value="Database Administrator">Database Administrator</option>
+                            <option value="Technical Writer">Technical Writer</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="skills">Skills</label>
+                        <textarea id="skills" name="skills" rows="3" required placeholder="Your skills..."></textarea>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="education">Education</label>
+                        <textarea id="education" name="education" rows="3" required placeholder="Your education details..."></textarea>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="projects">Projects</label>
+                        <textarea id="projects" name="projects" rows="3" required placeholder="Your project details..."></textarea>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="experience">Experience</label>
+                        <textarea id="experience" name="experience" rows="3" required placeholder="Internship / Job experience..."></textarea>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="career_objective">Career Objective</label>
+                        <textarea id="career_objective" name="career_objective" rows="3" required placeholder="Your career objective..."></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">Generate My professional Documents</button>
+            </form>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2026 AI Smart Resume Generator. Powered by Google Gemini AI</p>
+        </footer>
+    </div>
+
+    <script>
+        // Add form validation and interactions
+        document.querySelector('.resume-form').addEventListener('submit', function(e) {
+            const requiredFields = this.querySelectorAll('[required]');
+            let isValid = true;
+
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    isValid = false;
+                    field.classList.add('error');
+                } else {
+                    field.classList.remove('error');
+                }
+            });
+
+            if (!isValid) {
+                e.preventDefault();
+                alert('Please fill in all required fields.');
+            }
+        });
+
+        // Remove error class on input
+        document.querySelectorAll('input, textarea, select').forEach(field => {
+            field.addEventListener('input', function() {
+                this.classList.remove('error');
+            });
+        });
+    </script>
+</body>
+</html>
